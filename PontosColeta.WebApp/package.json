@@ -1,0 +1,17 @@
+{
+  "name": "pontoscoleta.webapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "typescript": "^3.0.3",
+    "vue": "^2.5.17",
+    "vue-class-component": "^6.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
