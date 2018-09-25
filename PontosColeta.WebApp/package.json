@@ -8,11 +8,12 @@
     "vue": "^2.5.17"
   },
   "devDependencies": {
-    "tsify": "^4.0.0",
-    "typescript": "^3.0.3",
-    "browserify": "^16.2.3",
     "@types/jquery": "^3.3.10",
-    "@types/jquery-validation-unobtrusive": "^3.2.32"
+    "@types/jquery-validation-unobtrusive": "^3.2.32",
+    "bingmaps": "^2.0.3",
+    "browserify": "^16.2.3",
+    "tsify": "^4.0.0",
+    "typescript": "^3.0.3"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

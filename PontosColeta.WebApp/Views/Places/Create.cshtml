@@ -5,19 +5,23 @@
 }
 
 <h2>Create</h2>
-
 <div id="app">
     <form v-on:submit.prevent="submit">
-        @Html.AntiForgeryToken()
+
 
         <div class="form-horizontal">
             <h4>Place</h4>
             <hr />
+            <div class="col-md-3"></div>
+            <div id='map' class="col-md-6" style="height: 250px"><progress></progress></div>
+            <div class="col-md-3"></div>
+            <div class="clearfix"></div>
+
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group">
                 @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", v_model="place.Name" } })
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", v_model = "place.Name" } })
                     @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -37,6 +41,8 @@
 </div>
 
 @section Scripts {
+    <script type='text/javascript' src='http://www.bing.com/api/maps/mapcontrol?key=ApDD4-89jIlKKE73oXvmERR86NRcyy7BPtrjDGe0Mk1q8ImIn9u9H2ThDXNgGdZo'></script>
+
     @Scripts.Render("~/bundles/jqueryval")
     <script src="~/Scripts/app/places/bundle.js"></script>
 }
