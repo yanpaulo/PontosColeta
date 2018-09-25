@@ -8,7 +8,7 @@ export class Place {
 
     Location: string;
 
-    Address: Address;
+    Address = new Address();
 
     WorkingDays: PlaceWorkingDay[];
 }

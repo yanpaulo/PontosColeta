@@ -6,11 +6,9 @@ const vue = new Vue({
         place: new Place()
     },
     methods: {
-        teste(event: Event) {
-            if (!$(event.srcElement as Element).valid()) {
-                event.preventDefault();
-                return;
-            }
+        submit(event: Event) {
+            if (!$(event.srcElement as Element).valid()) return;
+            console.log(this.place);
         }
     }
 });
