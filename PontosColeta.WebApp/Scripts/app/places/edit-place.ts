@@ -1,5 +1,6 @@
 ﻿import 'bingmaps';
 import Vue from 'vue';
+import axios from 'axios';
 import { Place } from './Place';
 import { Address } from './Address';
 
@@ -25,7 +26,9 @@ class Application {
     formSubmitted(event: Event) {
         if (!$(event.srcElement as Element).valid()) return;
 
-        console.log(this.place);
+        axios.post("/api/Places", this.place)
+            .then(response => alert("Foi"))
+            .catch(response => alert("Nâo foi"));
     }
 
     mapClicked(args: Microsoft.Maps.IMouseEventArgs) {

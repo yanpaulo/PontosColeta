@@ -5,7 +5,7 @@
 }
 
 <h2>Create</h2>
-<div id="app">
+<div v-cloak id="app">
     <form v-on:submit.prevent="submit">
         <div class="form-horizontal">
             <h4>Localização</h4>
@@ -15,7 +15,7 @@
                 <div id="map" class="col-md-12" style="width:100%; height: 250px"><progress></progress></div>
                 <div id="mapSearchContainer" v-if="mapLoaded" class="form-inline col-md-12" style="position: absolute; top: 20px; left: 40px">
                     <div class="form-group">
-                        <input type="text" class="form-control" id="mapSearch" placeholder="Pesquisar endereço" style="width: 250px">
+                        <input type="text" class="form-control" id="mapSearch" placeholder="Pesquisar endereço" autocomplete="off" style="width: 250px">
                     </div>
                 </div>
             </div>
@@ -44,7 +44,7 @@
             <div v-for="day in place.WorkingDays" class="form-group">
                 <div class="form-group">
                     <label class="control-label col-md-2">
-                        <input type="checkbox"> {{day.Name}}
+                        <input type="checkbox" v-model="day.IsEnabled"> {{day.Name}}
                     </label>
                     <div class="col-md-10">
                         <div class="form-inline">
