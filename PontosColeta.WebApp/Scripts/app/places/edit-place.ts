@@ -7,28 +7,46 @@ import { Address } from './Address';
 class Application {
     map: Microsoft.Maps.Map;
 
-    hasModulesLoaded = false;
-
     vue = new Vue({
         el: "#app",
         data: {
             place: new Place(),
-            mapLoaded: false
+            loading: true
         },
         methods: {
-            submit: this.formSubmitted
+            submit: (e: Event) => this.formSubmitted(e)
+        },
+        computed: {
+            overlayStyle: function () {
+                return { height: this.loading ? '100%' : '0' };
+            }
         },
         created: () => this.loadMap()
     });
 
     get place() { return this.vue.place; }
 
+    vueCreated() {
+        this.loadMap();
+    }
+
+    loadStarted() {
+        this.vue.loading = true;
+    }
+
+    loadFinished() {
+        this.vue.loading = false;
+    }
+
     formSubmitted(event: Event) {
         if (!$(event.srcElement as Element).valid()) return;
 
+        this.loadStarted();
+
         axios.post("/api/Places", this.place)
-            .then(response => alert("Foi"))
-            .catch(response => alert("Nâo foi"));
+            .then(response => window.location.href = "/Places")
+            .catch(response => console.log(response))
+            .then(() => this.loadFinished());
     }
 
     mapClicked(args: Microsoft.Maps.IMouseEventArgs) {
@@ -54,7 +72,6 @@ class Application {
     private loadMap() {
         try {
             this.map = new Microsoft.Maps.Map("#map", {});
-            this.vue.mapLoaded = true;
             Microsoft.Maps.loadModule(["Microsoft.Maps.WellKnownText", "Microsoft.Maps.AutoSuggest", "Microsoft.Maps.Search"], () => this.modulesLoaded());
         } catch (e) {
             console.log(e);
@@ -66,7 +83,7 @@ class Application {
         try {
             Microsoft.Maps.Events.addHandler(this.map, "click", (e) => this.mapClicked(e as Microsoft.Maps.IMouseEventArgs));
             this.loadAutoSuggest();
-            this.hasModulesLoaded = true;
+            this.loadFinished();
         } catch (e) {
             console.log(e);
         }

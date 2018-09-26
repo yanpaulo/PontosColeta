@@ -339,6 +339,7 @@
     <Content Include="Views\Places\Index.cshtml" />
     <Content Include="tsconfig.json" />
     <Content Include="Views\Places\Address.cshtml" />
+    <Content Include="Views\Places\Overlay.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
