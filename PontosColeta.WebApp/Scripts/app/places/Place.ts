@@ -6,9 +6,10 @@ export class Place {
 
     Name: string;
 
-    Location: string;
+    LocationWKT: string;
 
     Address = new Address();
 
-    WorkingDays: PlaceWorkingDay[];
+    WorkingDays: PlaceWorkingDay[] =
+        [0, 1, 2, 3, 4, 5, 6].map(n => new PlaceWorkingDay(n));
 }
