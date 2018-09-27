@@ -10,7 +10,11 @@
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
-            <SearchBar></SearchBar>
+            <StackLayout Orientation="Vertical">
+                <SearchBar Text="{Binding Search}" SearchButtonPressed="SearchBar_SearchButtonPressed"></SearchBar>
+                <ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}"></ActivityIndicator>
+            </StackLayout>
+
             <maps:Map x:Name="map" Grid.Row="1"></maps:Map>
         </Grid>
     </ContentPage.Content>

@@ -23,16 +23,27 @@ namespace PontosColeta.UserApp
             InitializeComponent();
         }
 
-        private void ViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        private async void ViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             switch (e.PropertyName)
             {
                 case nameof(MainPageViewModel.Places):
                     UpdateMap();
                     break;
+                case nameof(MainPageViewModel.Search):
+                    if (string.IsNullOrEmpty(viewModel.Search))
+                    {
+                        await viewModel.LoadPlacesAsync();
+                    }
+                    break;
                 default:
                     break;
             }
+        }
+
+        private void CheckSearch()
+        {
+            throw new NotImplementedException();
         }
 
         private void UpdateMap()
@@ -59,6 +70,19 @@ namespace PontosColeta.UserApp
             var position = new Position(split[1], split[0]);
             return position;
 
+        }
+
+        private async void SearchBar_SearchButtonPressed(object sender, EventArgs e)
+        {
+            try
+            {
+                await viewModel.LoadPlacesAsync();
+            }
+            catch (ApplicationException ex)
+            {
+                await DisplayAlert("Erro", ex.Message, "Ok");
+                throw;
+            }
         }
     }
 }

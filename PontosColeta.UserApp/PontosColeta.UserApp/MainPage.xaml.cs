@@ -16,7 +16,6 @@ namespace PontosColeta.UserApp
     public partial class MainPage : TabbedPage
     {
         private MainPageViewModel viewModel;
-        private WebService ws = new WebService();
 
         public MainPage ()
         {
@@ -28,14 +27,17 @@ namespace PontosColeta.UserApp
         {
             var geolocator = CrossGeolocator.Current;
             viewModel.Position = await geolocator.GetPositionAsync();
-            await LoadPlacesAsync();
+            try
+            {
+                await viewModel.LoadPlacesAsync();
+            }
+            catch (ApplicationException ex)
+            {
+                await DisplayAlert("Erro", ex.Message, "Ok");
+                throw;
+            }
         }
 
-        private async Task LoadPlacesAsync()
-        {
-            var position = viewModel.Position;
-
-            viewModel.Places = await ws.GetPlaces(position.AsWKT());
-        }
+        
     }
 }

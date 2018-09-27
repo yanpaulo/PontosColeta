@@ -11,12 +11,13 @@ namespace PontosColeta.UserApp.Services
     {
         private readonly HttpClient client = new HttpClient
         {
-            BaseAddress = new Uri("http://localhost:5049/api/")
+            //BaseAddress = new Uri("http://localhost:5049/api/")
+            BaseAddress = new Uri("http://coleta.yanscorp.com/api/")
         };
 
-        public async Task<List<Place>> GetPlaces(string wkt = "")
+        public async Task<List<Place>> GetPlaces(string wkt, string search)
         {
-            var response = await client.GetAsync($"Places?wkt={wkt}");
+            var response = await client.GetAsync($"Places?wkt={wkt}&search={search}");
             var content = await response.Content.ReadAsStringAsync();
             if (!response.IsSuccessStatusCode)
             {

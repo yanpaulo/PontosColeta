@@ -9,8 +9,10 @@
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
-
-            <SearchBar></SearchBar>
+            <StackLayout Orientation="Vertical">
+                <SearchBar Text="{Binding Search}" SearchButtonPressed="SearchBar_SearchButtonPressed"></SearchBar>
+                <ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}"></ActivityIndicator>
+            </StackLayout>
 
             <ListView Grid.Row="1" ItemsSource="{Binding Places}">
                 <ListView.ItemTemplate>
@@ -18,7 +20,7 @@
                         <TextCell Text="{Binding Name}" Detail="{Binding Distance,StringFormat='{0:N} metros'}"></TextCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
-                
+
             </ListView>
         </Grid>
     </ContentPage.Content>

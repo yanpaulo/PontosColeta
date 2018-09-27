@@ -19,5 +19,18 @@ namespace PontosColeta.UserApp
             BindingContext = viewModel = MainPageViewModel.Current;
 			InitializeComponent ();
 		}
-	}
+
+        private async void SearchBar_SearchButtonPressed(object sender, EventArgs e)
+        {
+            try
+            {
+                await viewModel.LoadPlacesAsync();
+            }
+            catch (ApplicationException ex)
+            {
+                await DisplayAlert("Erro", ex.Message, "Ok");
+                throw;
+            }
+        }
+    }
 }
