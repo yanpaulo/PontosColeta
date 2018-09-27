@@ -3,9 +3,11 @@ export class PlaceWorkingDay {
     private static daysOfWeek = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"];
     constructor(public DayOfWeek: number) { }
 
-    StartTime: Date;
+    IsEnabled = false;
 
-    EndTime: Date;
+    StartTime: string;
+
+    EndTime: string;
 
     get Name() {
         return PlaceWorkingDay.daysOfWeek[this.DayOfWeek];

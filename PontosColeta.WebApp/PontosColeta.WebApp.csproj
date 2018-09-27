@@ -278,6 +278,12 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\multi.png" />
+    <Content Include="Content\images\tree.jpg" />
+    <Content Include="Content\images\tree.png" />
+    <Content Include="Content\images\tri-color.jpg" />
+    <Content Include="Content\images\tri-gray.jpg" />
+    <Content Include="Content\images\tri-gray.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
