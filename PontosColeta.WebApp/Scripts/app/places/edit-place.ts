@@ -42,6 +42,7 @@ class Application {
         if (!$(event.srcElement as Element).valid()) return;
         if (!this.place.LocationWKT) {
             alert("Você deve selecionar um local no mapa.");
+            return;
         }
         this.loadStarted();
 
