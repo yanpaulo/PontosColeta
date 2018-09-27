@@ -18,9 +18,13 @@ namespace PontosColeta.WebApp.ApiControllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: api/Places
-        public IEnumerable<Place> GetPlaces()
+        public IEnumerable<Place> GetPlaces([FromUri]string wkt = null)
         {
-            return db.Places.ToList().Select(MapPlace);
+            var geography = wkt != null ? DbGeography.FromText(wkt) : null;
+            return db.Places
+                .ToList()
+                .Select(p => MapPlace(p, geography))
+                .ToList();
         }
 
         // GET: api/Places/5
@@ -117,12 +121,17 @@ namespace PontosColeta.WebApp.ApiControllers
             base.Dispose(disposing);
         }
 
-        private Place MapPlace(Place p)
+        private Place MapPlace(Place p, DbGeography geography = null)
         {
             p.LocationWKT = p.Location.AsText();
             p.WorkingDays = Enumerable.Range(0, 7)
                 .Select(n => p.WorkingDays.SingleOrDefault(day => (int)day.DayOfWeek == n) ?? new PlaceWorkingDay { DayOfWeek = (DayOfWeek)n })
                 .ToList();
+            if (geography != null)
+            {
+                p.Distance = p.Location.Distance(geography);
+            }
+
             return p;
         }
 

@@ -25,6 +25,9 @@ namespace PontosColeta.WebApp.Models
         [NotMapped]
         public string LocationWKT { get; set; }
 
+        [NotMapped]
+        public double? Distance { get; set; }
+
 
     }
 }
