@@ -15,7 +15,7 @@
             <ListView Grid.Row="1" ItemsSource="{Binding Places}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextCell Text="{Binding Name}" Detail="{Binding Distance}"></TextCell>
+                        <TextCell Text="{Binding Name}" Detail="{Binding Distance,StringFormat='{0:N} metros'}"></TextCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
                 
