@@ -52,7 +52,6 @@ namespace PontosColeta.UserApp.UWP
 
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
-                Xamarin.FormsMaps.Init("INSERT_AUTHENTICATION_TOKEN_HERE");
                 Xamarin.Forms.Forms.Init(e);
 
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)

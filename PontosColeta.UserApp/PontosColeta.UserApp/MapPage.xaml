@@ -1,25 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PontosColeta.UserApp.ListPage"
-             Title="Lista">
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             x:Class="PontosColeta.UserApp.MapPage"
+             Title="Mapa">
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
-
             <SearchBar></SearchBar>
-
-            <ListView Grid.Row="1" ItemsSource="{Binding Places}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <TextCell Text="{Binding Name}" Detail="{Binding Distance}"></TextCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-                
-            </ListView>
+            <maps:Map x:Name="map" Grid.Row="1"></maps:Map>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

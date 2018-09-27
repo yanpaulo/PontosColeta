@@ -21,6 +21,7 @@ namespace PontosColeta.UserApp.UWP
         {
             this.InitializeComponent();
 
+            Xamarin.FormsMaps.Init("6GrVKmno1nG7mSOq8tYy~OQUBI2oHmPubAovj_jyjqQ~AryHeVSG4KGaUIU4At8OPVzZmsUpYmJIecuCTkMcC3yP8ytevM-B2Ecxmz95uUr-");
             LoadApplication(new PontosColeta.UserApp.App());
         }
     }

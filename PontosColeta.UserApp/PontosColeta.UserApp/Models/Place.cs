@@ -17,5 +17,7 @@ namespace PontosColeta.UserApp
 
         public double? Distance { get; set; }
 
+        public string LocationWKT { get; set; }
+
     }
 }

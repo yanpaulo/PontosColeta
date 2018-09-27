@@ -6,5 +6,5 @@
              Appearing="TabbedPage_Appearing">
     <!--Pages can be added as references or inline-->
     <p:ListPage></p:ListPage>
-    <ContentPage Title="Mapa" />
+    <p:MapPage></p:MapPage>
 </TabbedPage>
