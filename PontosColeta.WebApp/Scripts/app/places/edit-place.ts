@@ -40,7 +40,9 @@ class Application {
 
     formSubmitted(event: Event) {
         if (!$(event.srcElement as Element).valid()) return;
-
+        if (!this.place.LocationWKT) {
+            alert("Você deve selecionar um local no mapa.");
+        }
         this.loadStarted();
 
         axios.post("/api/Places", this.place)
