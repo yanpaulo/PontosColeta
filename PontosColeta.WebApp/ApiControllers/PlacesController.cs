@@ -18,10 +18,12 @@ namespace PontosColeta.WebApp.ApiControllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: api/Places
-        public IEnumerable<Place> GetPlaces([FromUri]string wkt = null)
+        public IEnumerable<Place> GetPlaces([FromUri]string wkt = null, [FromUri]string search = null)
         {
-            var geography = wkt != null ? DbGeography.FromText(wkt) : null;
+            search = !string.IsNullOrEmpty(search) ? search : null;
+            var geography = !string.IsNullOrEmpty(wkt) ? DbGeography.FromText(wkt) : null;
             return db.Places
+                .Where(p => search == null || p.Name.Contains(search))
                 .ToList()
                 .Select(p => MapPlace(p, geography))
                 .ToList();
