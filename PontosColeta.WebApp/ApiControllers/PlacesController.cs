@@ -24,6 +24,7 @@ namespace PontosColeta.WebApp.ApiControllers
             var geography = !string.IsNullOrEmpty(wkt) ? DbGeography.FromText(wkt) : null;
             return db.Places
                 .Where(p => search == null || p.Name.Contains(search))
+                .OrderBy(p => p.Location.Distance(geography))
                 .ToList()
                 .Select(p => MapPlace(p, geography))
                 .ToList();
