@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Plugin.Geolocator;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,5 +14,12 @@ namespace PontosColeta.UserApp
 		{
 			InitializeComponent();
 		}
-	}
+
+        private async void ContentPage_Appearing(object sender, EventArgs e)
+        {
+            var locator = CrossGeolocator.Current;
+            var last = await locator.GetLastKnownLocationAsync();
+            var next = await locator.GetPositionAsync();
+        }
+    }
 }

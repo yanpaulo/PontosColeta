@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:PontosColeta.UserApp"
-             x:Class="PontosColeta.UserApp.MainPage">
+             x:Class="PontosColeta.UserApp.MainPage" Appearing="ContentPage_Appearing">
 
     <StackLayout>
         <!-- Place new controls here -->
