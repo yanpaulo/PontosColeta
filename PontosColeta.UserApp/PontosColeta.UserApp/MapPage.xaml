@@ -15,7 +15,7 @@
                 <ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}"></ActivityIndicator>
             </StackLayout>
 
-            <maps:Map x:Name="map" Grid.Row="1"></maps:Map>
+            <maps:Map x:Name="map" IsShowingUser="True" Grid.Row="1"></maps:Map>
         </Grid>
     </ContentPage.Content>
 </ContentPage>
